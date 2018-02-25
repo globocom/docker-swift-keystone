@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  # --------------------------------------------------------
+  # Swift Stack
+  # --------------------------------------------------------
+
+  # Swift
+  swift:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "6000:8080"
+      - "8080:8080"
+    environment:
+      - "KS_SWIFT_PUBLIC_URL=http://s3.local.com:8080"
+      - "KS_SWIFT_INTERNAL_URL=http://s3.local.com:8080"
+      - "KS_SWIFT_ADMIN_URL=http://s3.local.com:8080"
+      - "KS_ADMIN_URL=http://auth.s3.local.com:35357"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /tmp/store/swift:/usr/share/swift/data
+    depends_on:
+      - keystone
+    networks:
+      swks:
+        aliases:
+          - "s3.local.com"
+          - "i.s3.local.com"
+          - "api.s3.local.com"
+
+  keystone:
+    image: garland/docker-openstack-keystone
+    ports:
+      - "5000:35357"
+    networks:
+      swks:
+        aliases:
+          - "auth.s3.local.com"
+
+networks: 
+  swks:
