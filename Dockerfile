@@ -1,5 +1,5 @@
 FROM morrisjobke/docker-swift-onlyone
-MAINTAINER Backstage 3 <backstage3@corp.globo.com>
+LABEL maintainer="Backstage 3 <backstage3@corp.globo.com>"
 
 RUN apt-get update -y
 
