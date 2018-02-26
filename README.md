@@ -14,3 +14,5 @@ Environment variables wich can be replaced by user's values:
 - KS_SWIFT_INTERNAL_URL="http://s3.local.com:8080"
 - KS_SWIFT_ADMIN_URL="http://s3.local.com:8080"
 - KS_ADMIN_URL="http://auth.s3.local.com:35357"
+
+To start up a container with this swift image, the user has only to fill out the non optional enviroment variables. Remember that the swift image has to be used with a keystone image.
