@@ -1,5 +1,14 @@
 #!/bin/sh
 
+
+# This file is part of docker-swift-keystone.
+# https://github.com/globocom/docker-swift-keystone
+
+# Licensed under the MIT license:
+# http://www.opensource.org/licenses/MIT-license
+# Copyright (c) 2018, Globo.com (http://globo.com)
+
+
 # Validate environment variables
 
 # Example values:
